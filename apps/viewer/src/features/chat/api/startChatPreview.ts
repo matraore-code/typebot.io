@@ -81,6 +81,14 @@ export const startChatPreview = publicProcedure
       ctx,
     }) => {
       // ✅ Injecte les headers CORS ici
+
+      if (ctx.req?.method === "OPTIONS") {
+        ctx.res?.setHeader("Access-Control-Allow-Origin", "https://builder.linformel.cloud");
+        ctx.res?.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
+        ctx.res?.setHeader("Access-Control-Allow-Headers", "Content-Type");
+        ctx.res?.status(200).end();
+        return null;
+      }
       if (ctx?.res) {
         ctx.res.setHeader("Access-Control-Allow-Origin", "https://builder.linformel.cloud");
         ctx.res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
