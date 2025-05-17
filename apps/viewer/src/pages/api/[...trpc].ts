@@ -5,7 +5,13 @@ import type { NextApiRequest, NextApiResponse } from "next";
 import cors from "nextjs-cors";
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
-  await cors(req, res);
+  //await cors(req, res);
+
+  await cors(req, res, {
+    methods: ['GET', 'POST', 'OPTIONS'],
+    origin: 'https://builder.linformel.cloud',
+    optionsSuccessStatus: 200,
+  });
 
   return createOpenApiNextHandler({
     router: appRouter,
