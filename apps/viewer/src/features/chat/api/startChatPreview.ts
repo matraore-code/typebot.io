@@ -87,7 +87,8 @@ export const startChatPreview = publicProcedure
         ctx.res?.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
         ctx.res?.setHeader("Access-Control-Allow-Headers", "Content-Type");
         ctx.res?.status(200).end();
-        return null;
+        //return null;
+        return await new Promise(() => {}); 
       }
       if (ctx?.res) {
         ctx.res.setHeader("Access-Control-Allow-Origin", "https://builder.linformel.cloud");
