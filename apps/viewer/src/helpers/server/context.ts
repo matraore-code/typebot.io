@@ -10,6 +10,8 @@ export async function createContext(opts: trpcNext.CreateNextContextOptions) {
   const user = await getAuthenticatedUser(opts.req);
 
   return {
+    req: opts.req,
+    res: opts.res,
     user,
     origin: opts.req.headers.origin,
     iframeReferrerOrigin: opts.req.headers[
